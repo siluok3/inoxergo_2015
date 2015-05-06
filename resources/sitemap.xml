@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+	<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+	http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+
+<url>
+   <loc>http://www.inoxergo.gr/</loc>
+   <priority>1.0</priority>
+</url>
+
+
+<url>
+   <loc>http://www.inoxergo.gr/index.jsp</loc>
+     <priority>1.0</priority>
+</url>
+
+
+<url>
+   <loc>http://www.inoxergo.gr/index.jsp?link=etaireia</loc>
+     <priority>1.0</priority>
+</url>
+
+<url>
+   <loc>http://www.inoxergo.gr/index.jsp?link=profil</loc>
+     <priority>0.9</priority>
+</url>
+<url>
+   <loc>http://www.inoxergo.gr/index.jsp?link=contact</loc>
+     <priority>0.9</priority>
+</url>
+<url>
+   <loc>http://www.inoxergo.gr/index.jsp?link=kagkela</loc>
+     <priority>0.9</priority>
+</url>
+<url>
+   <loc>http://www.inoxergo.gr/index.jsp?link=emporio</loc>
+     <priority>0.9</priority>
+</url>
+<url>
+   <loc>http://www.inoxergo.gr/index.jsp?link=ependyseis</loc>
+     <priority>0.9</priority>
+</url>
+<url>
+   <loc>http://www.inoxergo.gr/index.jsp?link=kataskeyes</loc>
+     <priority>0.9</priority>
+</url>
+<url>
+   <loc>http://www.inoxergo.gr/index.jsp?link=klimakostasia</loc>
+     <priority>0.9</priority>
+</url>
+<url>
+   <loc>http://www.inoxergo.gr/index.jsp?link=metala</loc>
+     <priority>0.9</priority>
+</url>
+<url>
+   <loc>http://www.inoxergo.gr/index.jsp?link=pelatologio</loc>
+     <priority>0.9</priority>
+</url>
+<url>
+   <loc>http://www.inoxergo.gr/index.jsp?link=portes</loc>
+     <priority>0.9</priority>
+</url>
+<url>
+   <loc>http://www.inoxergo.gr/index.jsp?link=skales</loc>
+     <priority>0.9</priority>
+</url>
+<url>
+   <loc>http://www.inoxergo.gr/index.jsp?link=ypostega</loc>
+     <priority>0.9</priority>
+</url>
+
+    </urlset>

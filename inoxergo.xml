@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="inoxergo" default="all">
+  
+  
+  <property file="inoxergo.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value="-encoding UTF8"/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/*.rbc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.ear"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.swc"/>
+    <include name="*.ane"/>
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <include name="**/?*.properties"/>
+    <include name="**/?*.xml"/>
+    <include name="**/?*.gif"/>
+    <include name="**/?*.png"/>
+    <include name="**/?*.jpeg"/>
+    <include name="**/?*.jpg"/>
+    <include name="**/?*.html"/>
+    <include name="**/?*.dtd"/>
+    <include name="**/?*.tld"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.home.1.8" value="C:\Program Files\Java\jdk1.8.0_45"/>
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="jre/lib/ext/access-bridge.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunmscapi.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}/bin"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.inoxergo.classpath">
+    <pathelement location="${basedir}/WEB-INF/lib/activation.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-beanutils.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-digester.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-email-1.1.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-fileupload-1.2.1.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-fileupload.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-io-1.4.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/i18ntag.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/jsp-api.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/log4j-1.2.11.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/mail.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/mysql-connector-java-3.0.10-stable-bin.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/servlet-api.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/smtp.jar"/>
+  </path>
+  
+  
+  <!-- Application Server Libraries -->
+  
+  <!-- Modules -->
+
+  <!-- Module Inoxergo -->
+
+  <dirname property="module.inoxergo.basedir" file="${ant.file}"/>
+
+  <property name="module.jdk.home.inoxergo" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.inoxergo" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.inoxergo" value="${project.jdk.classpath}"/>
+
+  <property name="compiler.args.inoxergo" value="-encoding UTF-8 -source 8 ${compiler.args}"/>
+
+  <property name="inoxergo.output.dir" value="${module.inoxergo.basedir}/../../../../webapp2/inoxergo"/>
+  <property name="inoxergo.testoutput.dir" value="${module.inoxergo.basedir}/target/test/inoxergo"/>
+
+  <path id="inoxergo.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+
+  <path id="inoxergo.module.production.classpath">
+    <path refid="${module.jdk.classpath.inoxergo}"/>
+    <pathelement location="${basedir}/WEB-INF/lib/smtp.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/activation.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-fileupload-1.2.1.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/log4j-1.2.11.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-io-1.4.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-digester.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-fileupload.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-email-1.1.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/i18ntag.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-beanutils.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/mail.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/mysql-connector-java-3.0.10-stable-bin.jar"/>
+    <path refid="library.inoxergo.classpath"/>
+    <pathelement location="${basedir}/WEB-INF/lib/servlet-api.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/jsp-api.jar"/>
+  </path>
+
+  <path id="inoxergo.runtime.production.module.classpath">
+    <pathelement location="${inoxergo.output.dir}"/>
+    <pathelement location="${basedir}/WEB-INF/lib/smtp.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/activation.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-fileupload-1.2.1.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/log4j-1.2.11.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-io-1.4.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-digester.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-fileupload.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-email-1.1.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/i18ntag.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-beanutils.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/mail.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/mysql-connector-java-3.0.10-stable-bin.jar"/>
+    <path refid="library.inoxergo.classpath"/>
+    <pathelement location="${basedir}/WEB-INF/lib/servlet-api.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/jsp-api.jar"/>
+  </path>
+
+  <path id="inoxergo.module.classpath">
+    <path refid="${module.jdk.classpath.inoxergo}"/>
+    <pathelement location="${inoxergo.output.dir}"/>
+    <pathelement location="${basedir}/WEB-INF/lib/smtp.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/activation.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-fileupload-1.2.1.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/log4j-1.2.11.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-io-1.4.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-digester.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-fileupload.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-email-1.1.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/i18ntag.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-beanutils.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/mail.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/mysql-connector-java-3.0.10-stable-bin.jar"/>
+    <path refid="library.inoxergo.classpath"/>
+    <pathelement location="${basedir}/WEB-INF/lib/servlet-api.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/jsp-api.jar"/>
+  </path>
+
+  <path id="inoxergo.runtime.module.classpath">
+    <pathelement location="${inoxergo.testoutput.dir}"/>
+    <pathelement location="${inoxergo.output.dir}"/>
+    <pathelement location="${basedir}/WEB-INF/lib/smtp.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/activation.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-fileupload-1.2.1.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/log4j-1.2.11.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-io-1.4.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-digester.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-fileupload.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-email-1.1.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/i18ntag.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/commons-beanutils.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/mail.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/mysql-connector-java-3.0.10-stable-bin.jar"/>
+    <path refid="library.inoxergo.classpath"/>
+    <pathelement location="${basedir}/WEB-INF/lib/servlet-api.jar"/>
+    <pathelement location="${basedir}/WEB-INF/lib/jsp-api.jar"/>
+  </path>
+
+  <patternset id="excluded.from.module.inoxergo">
+    <patternset refid="ignored.files"/>
+  </patternset>
+
+  <patternset id="excluded.from.compilation.inoxergo">
+    <patternset refid="excluded.from.module.inoxergo"/>
+  </patternset>
+
+  <path id="inoxergo.module.sourcepath">
+    <dirset dir="${module.inoxergo.basedir}">
+      <include name="WEB-INF/classes"/>
+    </dirset>
+  </path>
+
+  <target name="compile.module.inoxergo" depends="compile.module.inoxergo.production,compile.module.inoxergo.tests"  description="Compile module inoxergo"/>
+
+  <target name="compile.module.inoxergo.production" description="Compile module inoxergo; production classes">
+    <mkdir dir="${inoxergo.output.dir}"/>
+    <mkdir dir="${inoxergo.output.dir}/WEB-INF/classes"/>
+    <javac destdir="${inoxergo.output.dir}/WEB-INF/classes" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true"  executable="${module.jdk.bin.inoxergo}/javac">
+      <compilerarg line="${compiler.args.inoxergo}"/>
+      <bootclasspath refid="inoxergo.module.bootclasspath"/>
+      <classpath refid="inoxergo.module.production.classpath"/>
+      <src refid="inoxergo.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.inoxergo"/>
+    </javac>
+
+    <copy todir="${inoxergo.output.dir}">
+      <fileset dir="${module.inoxergo.basedir}/WEB-INF/classes">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+   </target>
+
+  <target name="compile.module.inoxergo.tests" depends="compile.module.inoxergo.production" description="compile module inoxergo; test classes" unless="skip.tests"/>
+
+  <target name="clean.module.inoxergo" description="cleanup module">
+    <delete dir="${inoxergo.output.dir}"/>
+    <delete dir="${inoxergo.testoutput.dir}"/>
+  </target>
+
+
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.inoxergo, clean.artifact.inoxergo:inoxergo_exploded" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.inoxergo" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.inoxergo:inoxergo_exploded" value="${basedir}/../../../../webapp2/inoxergo"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="clean.artifact.inoxergo:inoxergo_exploded" description="clean inoxergo:inoxergo exploded artifact output">
+    <delete dir="$${basedir}/../../../../webapp2/inoxergo"/>
+  </target>
+  
+  <target name="artifact.inoxergo:inoxergo_exploded" depends="init.artifacts, compile.module.inoxergo" description="Build &#39;inoxergo:inoxergo exploded&#39; artifact">
+    <mkdir dir="${artifact.output.inoxergo:inoxergo_exploded}"/>
+    <mkdir dir="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF"/>
+      <copy file="${basedir}/WEB-INF/web.xml" tofile="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/web.xml"/>
+      <copy file="${basedir}/WEB-INF/log4j.properties" tofile="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/log4j.properties"/>
+
+    <mkdir dir="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/classes"/>
+    <copy todir="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/classes">
+      <fileset dir="${inoxergo.output.dir}"/>
+    </copy>
+    <mkdir dir="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/lib"/>
+    <copy file="${basedir}/WEB-INF/lib/activation.jar" tofile="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/lib/activation.jar"/>
+    <copy file="${basedir}/WEB-INF/lib/commons-beanutils.jar" tofile="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/lib/commons-beanutils.jar"/>
+    <copy file="${basedir}/WEB-INF/lib/commons-digester.jar" tofile="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/lib/commons-digester.jar"/>
+    <copy file="${basedir}/WEB-INF/lib/commons-email-1.1.jar" tofile="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/lib/commons-email-1.1.jar"/>
+    <copy file="${basedir}/WEB-INF/lib/commons-fileupload-1.2.1.jar" tofile="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/lib/commons-fileupload-1.2.1.jar"/>
+    <copy file="${basedir}/WEB-INF/lib/commons-fileupload.jar" tofile="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/lib/commons-fileupload.jar"/>
+    <copy file="${basedir}/WEB-INF/lib/commons-io-1.4.jar" tofile="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/lib/commons-io-1.4.jar"/>
+    <copy file="${basedir}/WEB-INF/lib/i18ntag.jar" tofile="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/lib/i18ntag.jar"/>
+    <copy file="${basedir}/WEB-INF/lib/log4j-1.2.11.jar" tofile="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/lib/log4j-1.2.11.jar"/>
+    <copy file="${basedir}/WEB-INF/lib/mail.jar" tofile="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/lib/mail.jar"/>
+    <copy file="${basedir}/WEB-INF/lib/mysql-connector-java-3.0.10-stable-bin.jar" tofile="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/lib/mysql-connector-java-3.0.10-stable-bin.jar"/>
+    <copy file="${basedir}/WEB-INF/lib/smtp.jar" tofile="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/lib/smtp.jar"/>
+    <copy todir="${artifact.output.inoxergo:inoxergo_exploded}">
+      <fileset dir="${basedir}/resources"/>
+    </copy>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.inoxergo:inoxergo_exploded" description="Build all artifacts">
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>
