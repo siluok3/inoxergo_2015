@@ -281,10 +281,10 @@
       <copy file="${basedir}/WEB-INF/web.xml" tofile="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/web.xml"/>
       <copy file="${basedir}/WEB-INF/log4j.properties" tofile="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/log4j.properties"/>
 
-    <mkdir dir="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/classes"/>
+    <!--<mkdir dir="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/classes"/>
     <copy todir="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/classes">
       <fileset dir="${inoxergo.output.dir}"/>
-    </copy>
+    </copy> -->
     <mkdir dir="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/lib"/>
     <copy file="${basedir}/WEB-INF/lib/activation.jar" tofile="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/lib/activation.jar"/>
     <copy file="${basedir}/WEB-INF/lib/commons-beanutils.jar" tofile="${artifact.output.inoxergo:inoxergo_exploded}/WEB-INF/lib/commons-beanutils.jar"/>
